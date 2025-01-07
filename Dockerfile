@@ -18,4 +18,4 @@ EXPOSE 7777
 
 # Command to run the application
 #CMD ["pm2-runtime", "start", "ecosystem.config.js"]
-CMD ["node", "src/app.js"]
+#CMD ["node", "src/app.js"]
