@@ -5,6 +5,7 @@ const app = express()
 app.get('/server1', (req,res)=> {
     const header = req.headers
     const secret = process.env.ENV_SECRET
+    console.log("Get : Server1")
     res.status(200).json({header , secret});
 })
 

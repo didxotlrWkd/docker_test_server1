@@ -1,5 +1,5 @@
 # Use the official Node.js image
-FROM node:18
+FROM node:18-alpine
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -17,4 +17,5 @@ COPY . .
 EXPOSE 7777
 
 # Command to run the application
-CMD ["node", "src/app.js"]
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]
+#CMD ["node", "src/app.js"]
