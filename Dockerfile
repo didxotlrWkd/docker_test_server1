@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 7777
 
 # Command to run the application
-CMD ["node", "src/index.js"]
+CMD ["node", "src/app.js"]
