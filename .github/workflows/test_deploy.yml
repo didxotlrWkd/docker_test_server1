@@ -37,7 +37,7 @@ jobs:
         port: ${{ secrets.SERVER_PORT }}
         key: ${{ secrets.SERVER_KEY }}
         script: |
-          echo "Logging in to Docker Hub...."
+          echo "Logging in to Docker Hub....."
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
           echo "Pulling the latest Docker image..."
