@@ -36,20 +36,21 @@ jobs:
         username: ubuntu
         port: 22
         key: ${{ secrets.SERVER_KEY }}
-        script: |
-          echo "Logging in to Docker Hub......"
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        script: whoami
+        # script: |
+        #   echo "Logging in to Docker Hub......"
+        #   docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-          echo "Pulling the latest Docker image..."
-          docker pull ${{ env.DOCKER_IMAGE_TAG }}
+        #   echo "Pulling the latest Docker image..."
+        #   docker pull ${{ env.DOCKER_IMAGE_TAG }}
 
-          echo "Stopping the existing container..."
-          docker stop ${{ secrets.DOCKER_IMAGENAME }} || true
+        #   echo "Stopping the existing container..."
+        #   docker stop ${{ secrets.DOCKER_IMAGENAME }} || true
 
-          echo "Removing the existing container..."
-          docker rm ${{ secrets.DOCKER_IMAGENAME }} || true
+        #   echo "Removing the existing container..."
+        #   docker rm ${{ secrets.DOCKER_IMAGENAME }} || true
 
-          echo "Running the new Docker container..."
-          docker run -d --restart=always --name ${{ secrets.DOCKER_IMAGENAME }} -p 7777:7777 ${{ env.DOCKER_IMAGE_TAG }}
+        #   echo "Running the new Docker container..."
+        #   docker run -d --restart=always --name ${{ secrets.DOCKER_IMAGENAME }} -p 7777:7777 ${{ env.DOCKER_IMAGE_TAG }}
 
-          echo "Deployment complete."
+        #   echo "Deployment complete."
