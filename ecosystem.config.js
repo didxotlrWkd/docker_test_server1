@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
           name: 'server1',
-          script: '/src/app.js', 
+          script: 'src/app.js', 
           instances: 1,
           exec_mode: 'fork',
           env: {
