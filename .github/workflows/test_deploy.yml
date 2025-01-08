@@ -38,7 +38,7 @@ jobs:
         key: ${{ secrets.SERVER_KEY }}
         script: |
             echo "Running whoami command..."
-            whoami
+            id
             echo "Hostname:"
             hostname
             echo "Current Directory:"
