@@ -37,6 +37,7 @@ jobs:
         port: ${{ secrets.SERVER_PORT }}
         key: ${{ secrets.SERVER_KEY }}
         script: |
+          cd ~/docker_test
           echo "Pulling the latest Docker image..."
           sudo docker pull ${{ env.DOCKER_IMAGE_TAG }}
 
