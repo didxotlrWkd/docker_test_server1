@@ -40,5 +40,5 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker pull ${{ env.DOCKER_IMAGE_TAG }}
           docker stop ${{secrets.DOCKER_IMAGENAME}} || true
-          docker rm ${{secrets.DOCKER_IMAGENAME}} || true
+          docker rmi ${{secrets.DOCKER_IMAGENAME}} || true
           docker run -d --restart=always --name ${{secrets.DOCKER_IMAGENAME}} -p 7777:7777 ${{ env.DOCKER_IMAGE_TAG }}
