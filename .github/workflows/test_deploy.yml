@@ -39,7 +39,7 @@ jobs:
         script: |
           cd ~/docker_test
           echo "Pulling the latest Docker image..."
-          sudo docker pull ${{ env.DOCKER_IMAGE_TAG }}
+          sudo docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
 
           echo "Stopping the existing container..."
           sudo docker stop ${{ secrets.DOCKER_IMAGENAME }} || true
