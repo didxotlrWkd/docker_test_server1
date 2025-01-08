@@ -10,24 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
+    # - name: Check out repository
+    #   uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+    # - name: Set up Docker Buildx
+    #   uses: docker/setup-buildx-action@v2
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+    # - name: Log in to Docker Hub
+    #   uses: docker/login-action@v2
+    #   with:
+    #     username: ${{ secrets.DOCKER_USERNAME }}
+    #     password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true
-        tags: ${{ secrets.DOCKER_REPOSITORY }}:latest
+    # - name: Build and push Docker image
+    #   uses: docker/build-push-action@v2
+    #   with:
+    #     context: .
+    #     push: true
+    #     tags: ${{ secrets.DOCKER_REPOSITORY }}:latest
     
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
@@ -36,7 +36,13 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         port: ${{ secrets.SERVER_PORT }}
         key: ${{ secrets.SERVER_KEY }}
-        script: whoami
+        script: |
+            echo "Running whoami command..."
+            whoami
+            echo "Hostname:"
+            hostname
+            echo "Current Directory:"
+            pwd
           # echo "Logging in to Docker Hub......"
           # docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
