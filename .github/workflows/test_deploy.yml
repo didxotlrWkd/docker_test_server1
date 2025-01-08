@@ -36,8 +36,8 @@ jobs:
         username: ubuntu
         port: 22
         key: ${{ secrets.SERVER_KEY }}
-        script: whoami
-        
+        script: id
+
         # script: |
         #   echo "Logging in to Docker Hub......"
         #   docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
