@@ -32,10 +32,10 @@ jobs:
     - name: Deploy to EC2
       uses: appleboy/ssh-action@v0.1.1
       with:
-        host: 123
+        host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SERVER_USERNAME }}
         port: 22
-        key: ${{ secrets.SERVER_KEY }}
+        password: ${{ secrets.SERVER_KEY }}
         script: whoami
 
         # script: |
