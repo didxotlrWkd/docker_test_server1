@@ -2,13 +2,15 @@
 FROM node:18-alpine
 
 # Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /usr
 
 # Copy package files
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+
+RUN npm install -g pm2
 
 # Copy the rest of the application
 COPY . .
@@ -18,4 +20,4 @@ EXPOSE 7777
 
 # Command to run the application
 #CMD ["pm2-runtime", "start", "ecosystem.config.js"]
-CMD ["node", "src/app.js"]
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]

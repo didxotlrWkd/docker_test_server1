@@ -28,3 +28,17 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKER_REPOSITORY }}:latest
+    
+    - name: Deploy to EC2
+        uses: appleboy/ssh-action@v0.1.1
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          port: ${{ secrets.SERVER_PORT }}
+          key: ${{ secrets.SERVER_KEY }}
+          script: |
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            docker pull ${{ env.DOCKER_IMAGE_TAG }}
+            docker stop ${{secrets.DOCKER_IMAGENAME}} || true
+            docker rm ${{secrets.DOCKER_IMAGENAME}} || true
+            docker run -d --restart=always --name ${{secrets.DOCKER_IMAGENAME}} -p 7777:7777 ${{ env.DOCKER_IMAGE_TAG }}
