@@ -33,7 +33,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.1
       with:
         host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrests.SERVER_USERNAME}}
+        username: ${{ secrests.SERVER_USERNAME }}
         port: 22
         key: ${{ secrets.SERVER_KEY }}
         script: id
