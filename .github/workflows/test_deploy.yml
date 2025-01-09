@@ -39,15 +39,8 @@ jobs:
         script: |
           cd ~/docker_test
           echo "Pulling the latest Docker image..."
-          sudo docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
+          sudo docker-compose pull ${{ secrets.DOCKER_IMAGENAME }}
 
-          echo "Stopping the existing container..."
-          sudo docker stop ${{ secrets.DOCKER_IMAGENAME }} || true
-
-          echo "Removing the existing container..."
-          sudo docker rmi ${{ secrets.DOCKER_IMAGENAME }} || true
-
-          echo "Running the new Docker container..."
-          sudo docker run -d --restart=always --name ${{ secrets.DOCKER_IMAGENAME }} -p 7777:7777 ${{ env.DOCKER_IMAGE_TAG }}
+          sudo docker-compose up -d ${{ secrets.DOCKER_IMAGENAME }}
 
           echo "Deployment complete."
