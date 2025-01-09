@@ -40,7 +40,8 @@ jobs:
           cd ~/docker_test
           echo "Pulling the latest Docker image..."
           sudo docker-compose pull ${{ secrets.DOCKER_IMAGENAME }}
-          sudo docker image prune -f
-          sudo docker-compose up -d ${{ secrets.DOCKER_IMAGENAME }}
+          sudo docker stop ${{secrets.DOCKER_IMAGENAME}} || true
+          sudo docker rm ${{secrets.DOCKER_IMAGENAME}} || true
+          sudo docker run -d --restart=always --name ${{secrets.DOCKER_IMAGENAME}} -p 7777:7777 latest
 
           echo "Deployment complete."
