@@ -38,11 +38,8 @@ jobs:
         key: ${{ secrets.SERVER_KEY }}
         script: |
           cd ~/docker_test
-          echo "Pulling the latest Docker image..."
           sudo docker-compose pull ${{ secrets.DOCKER_IMAGENAME }}
           sudo docker stop ${{secrets.DOCKER_IMAGENAME}} || true
           sudo docker rm ${{secrets.DOCKER_IMAGENAME}} || true
           sudo docker-compose up -d
           sudo docker images -f "dangling=true" -q | xargs -r sudo docker rmi 
-
-          echo "Deployment complete."
