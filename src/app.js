@@ -5,7 +5,7 @@ const app = express()
 app.get('/server1', (req,res)=> {
     const header = req.headers
     console.log("Get : Server1")
-    res.status(200).json({header , date : new Date() , version : "2025-01-09_v6"});
+    res.status(200).json({header , date : new Date() , version : "2025-01-09_v7"});
 })
 
 app.listen(7777, () => {

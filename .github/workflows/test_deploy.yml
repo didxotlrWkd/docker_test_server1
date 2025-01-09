@@ -43,5 +43,6 @@ jobs:
           sudo docker stop ${{secrets.DOCKER_IMAGENAME}} || true
           sudo docker rm ${{secrets.DOCKER_IMAGENAME}} || true
           sudo docker-compose up -d
+          sudo docker images -f "dangling=true" -q | xargs -r sudo docker rmi 
 
           echo "Deployment complete."
